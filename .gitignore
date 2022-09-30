@@ -1,0 +1,8 @@
+# Local Netlify folder
+.netlify
+
+# Generated files
+build/
+
+# Dependencies
+node_modules/

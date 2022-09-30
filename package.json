@@ -1,0 +1,22 @@
+{
+  "name": "msg-relay",
+  "version": "0.1.0",
+  "description": "Message relay server",
+  "main": "index.js",
+  "scripts": {
+    "build:clean": "rm -rf ./build",
+    "spec:build": "npx @airtasker/spot generate -c src/spec/api.ts --generator openapi3 --out ./build/",
+    "spec:yaml": "npm run spec:build -- --language yaml",
+    "spec:json": "npm run spec:build -- --language json",
+    "spec:all": "npm run spec:yaml && npm run spec:json"
+  },
+  "author": "Aaron Bassett",
+  "license": "MIT",
+  "dependencies": {
+    "@netlify/functions": "^1.2.0"
+  },
+  "devDependencies": {
+    "yarn": "^1.22.19",
+    "@airtasker/spot": "^1.9.0"
+  }
+}
