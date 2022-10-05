@@ -7,7 +7,7 @@ import {
   response,
 } from "@airtasker/spot"
 
-import { Success, ErrorBadRequest } from "../responses"
+import { Success, Error } from "../responses"
 
 /**
  * Generate a QR code for a URL
@@ -28,7 +28,7 @@ class CreateQRCode {
   successfulResponse(@body body: Success) {}
 
   @response({ status: 400 })
-  errorBadRequest(@body body: ErrorBadRequest) {}
+  errorBadRequest(@body body: Error) {}
 }
 
 interface CreateQRCodeRequest {

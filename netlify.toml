@@ -1,0 +1,10 @@
+
+[build]
+  command = "npm run build:all"
+  functions = "./build/functions/"
+  publish = "./build/deploy/"
+
+  [[redirects]]
+    from = "/*"
+    to = "/openapi.json"
+    status = 200

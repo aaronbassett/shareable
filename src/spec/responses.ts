@@ -7,7 +7,7 @@ export interface Success {
   message: String
 }
 
-export interface ErrorBadRequest {
+export interface Error {
   /**
    * Error details
    */

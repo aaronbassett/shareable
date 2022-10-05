@@ -5,18 +5,29 @@
   "main": "index.js",
   "scripts": {
     "build:clean": "rm -rf ./build",
-    "spec:build": "npx @airtasker/spot generate -c src/spec/api.ts --generator openapi3 --out ./build/",
+    "build:dir": "mkdir -p ./build/{specs,deploy,functions}",
+    "build:all": "npm run build:clean && npm run build:dir && npm run spec:all && npm run spec:deploy && npm run functions:deploy ",
+    "spec:build": "npx @airtasker/spot generate -c src/spec/api.ts --generator openapi3 --out ./build/specs/",
     "spec:yaml": "npm run spec:build -- --language yaml",
     "spec:json": "npm run spec:build -- --language json",
-    "spec:all": "npm run spec:yaml && npm run spec:json"
+    "spec:all": "npm run spec:yaml && npm run spec:json",
+    "spec:deploy": "cp ./build/specs/api.json ./build/deploy/openapi.json",
+    "functions:deploy": "cp -r ./src/functions/* ./build/functions/",
+    "local:docs": "npx @airtasker/spot docs src/spec/api.ts",
+    "local:dev": "netlify build && netlify dev --port=8008"
   },
   "author": "Aaron Bassett",
   "license": "MIT",
   "dependencies": {
-    "@netlify/functions": "^1.2.0"
+    "@netlify/functions": "^1.2.0",
+    "@sendgrid/mail": "^7.7.0",
+    "handlebars": "^4.7.7",
+    "joi": "^17.6.2",
+    "tslog": "^3.3.4"
   },
   "devDependencies": {
-    "yarn": "^1.22.19",
-    "@airtasker/spot": "^1.9.0"
+    "@airtasker/spot": "^1.9.0",
+    "@types/node": "^18.8.2",
+    "yarn": "^1.22.19"
   }
 }

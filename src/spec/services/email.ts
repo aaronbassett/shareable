@@ -1,6 +1,13 @@
-import { String, body, endpoint, request, response } from "@airtasker/spot"
+import {
+  String,
+  Integer,
+  body,
+  endpoint,
+  request,
+  response,
+} from "@airtasker/spot"
 
-import { Success, ErrorBadRequest } from "../responses"
+import { Success, Error } from "../responses"
 
 /**
  * Send a new email message via [SendGrid](https://sendgrid.com/)
@@ -21,7 +28,10 @@ class SendEmail {
   successfulResponse(@body body: Success) {}
 
   @response({ status: 400 })
-  errorBadRequest(@body body: ErrorBadRequest) {}
+  errorBadRequest(@body body: Error) {}
+
+  @response({ status: 405 })
+  errorUnsupportedMethod(@body body: Error) {}
 }
 
 interface SendEmailRequest {
@@ -34,47 +44,49 @@ interface SendEmailRequest {
    */
   seed: String
   /**
+   * Amount of token sent
+   */
+  amount: Integer
+  /**
    * Claim URL
    */
   claim_url: String
   /**
    * Recipient's name (truncated at 20 characters)
-   *
    */
-  to_name?: String
+  to_name: String
   /**
    * Sender's name (truncated at 20 characters)
-   *
    */
-  from_name?: String
+  from_name: String
   /**
-   * Send HTML email
+   * Token symbol (truncated at 10 characters)
    *
-   * @default true
+   * @default "$DOT"
    */
-  html?: boolean
+  token_symbol?: String
   /**
-   * Send plain text email
+   * Network name (truncated at 20 characters)
    *
-   * @default true
+   * @default "Polkadot"
    */
-  txt?: boolean
+  network_name?: String
   /**
    * HTML email template
    *
-   * @default "default.html"
+   * @default "html"
    */
   html_template?: String
   /**
    * Plain text email template
    *
-   * @default "default.txt"
+   * @default "txt"
    */
   txt_template?: String
   /**
    * Email subject template
    *
-   * @default "subject.txt"
+   * @default "subject"
    */
   subject_template?: String
 }
