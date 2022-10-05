@@ -1,13 +1,20 @@
 import { String } from "@airtasker/spot"
 
-export interface Success {
+export interface SuccessResponse {
   /**
-   * Response details
+   * Success message
    */
   message: String
 }
 
-export interface Error {
+export interface ImageResponse {
+  /**
+   * image data uri (base64)
+   */
+  datauri: String
+}
+
+export interface ErrorResponse {
   /**
    * Error details
    */

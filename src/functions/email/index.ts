@@ -23,17 +23,17 @@ const handler: Handler = async (event, context) => {
         html: rendered.html ?? undefined,
       }
 
-      const emailResponse = await mail.send(emailData)
+      await mail.send(emailData)
 
       return {
         statusCode: 200,
-        body: JSON.stringify(emailResponse),
+        body: JSON.stringify({ message: "Email sent" }),
       }
     } else {
       log.fatal(error)
       return {
         statusCode: 400,
-        body: JSON.stringify(error.details),
+        body: JSON.stringify({ message: error.details[0].message }),
       }
     }
   } else {

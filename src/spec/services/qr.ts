@@ -7,7 +7,7 @@ import {
   response,
 } from "@airtasker/spot"
 
-import { Success, Error } from "../responses"
+import { ImageResponse, ErrorResponse } from "../responses"
 
 /**
  * Generate a QR code for a URL
@@ -25,10 +25,10 @@ class CreateQRCode {
   request(@body body: CreateQRCodeRequest) {}
 
   @response({ status: 201 })
-  successfulResponse(@body body: Success) {}
+  successfulResponse(@body body: ImageResponse) {}
 
   @response({ status: 400 })
-  errorBadRequest(@body body: Error) {}
+  errorBadRequest(@body body: ErrorResponse) {}
 }
 
 interface CreateQRCodeRequest {
@@ -45,13 +45,13 @@ interface CreateQRCodeRequest {
    *
    * @default true
    */
-  logo?: boolean
+  add_logo?: boolean
   /**
    * Logo file name
    *
-   * @default "default-logo.png"
+   * @default "polkadot"
    */
-  logo_filename?: String
+  logo_name?: String
   /**
    * QR code width in pixels
    * Forces a specific width for the output image. If width is too small to contain the qr symbol, this option will be ignored.
@@ -69,7 +69,7 @@ interface CreateQRCodeRequest {
    * Color of dark module. Value must be in hex format (RGBA).
    * Note: dark color should always be darker than color_light.
    *
-   * @default "#000000ff"
+   * @default "#E6007A"
    */
   color_dark?: String
   /**

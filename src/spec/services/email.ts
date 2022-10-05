@@ -7,7 +7,7 @@ import {
   response,
 } from "@airtasker/spot"
 
-import { Success, Error } from "../responses"
+import { SuccessResponse, ErrorResponse } from "../responses"
 
 /**
  * Send a new email message via [SendGrid](https://sendgrid.com/)
@@ -25,13 +25,13 @@ class SendEmail {
   request(@body body: SendEmailRequest) {}
 
   @response({ status: 201 })
-  successfulResponse(@body body: Success) {}
+  successfulResponse(@body body: SuccessResponse) {}
 
   @response({ status: 400 })
-  errorBadRequest(@body body: Error) {}
+  errorBadRequest(@body body: ErrorResponse) {}
 
   @response({ status: 405 })
-  errorUnsupportedMethod(@body body: Error) {}
+  errorUnsupportedMethod(@body body: ErrorResponse) {}
 }
 
 interface SendEmailRequest {

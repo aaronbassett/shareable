@@ -4,6 +4,9 @@
   functions = "./build/functions/"
   publish = "./build/deploy/"
 
+  [functions]
+  included_files = ["./build/functions/**"]
+
   [[redirects]]
     from = "/*"
     to = "/openapi.json"

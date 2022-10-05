@@ -22,8 +22,11 @@
     "@netlify/functions": "^1.2.0",
     "@sendgrid/mail": "^7.7.0",
     "handlebars": "^4.7.7",
+    "jimp": "^0.16.2",
     "joi": "^17.6.2",
-    "tslog": "^3.3.4"
+    "qrcode": "^1.5.1",
+    "tslog": "^3.3.4",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@airtasker/spot": "^1.9.0",

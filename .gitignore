@@ -6,6 +6,7 @@
 
 # Generated files
 build/
+.DS_Store
 
 # Dependencies
 node_modules/
