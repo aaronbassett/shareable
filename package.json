@@ -12,9 +12,12 @@
     "spec:json": "npm run spec:build -- --language json",
     "spec:all": "npm run spec:yaml && npm run spec:json",
     "spec:deploy": "cp ./build/specs/api.json ./build/deploy/openapi.json",
+    "spec:validate": "npx @airtasker/spot validate src/spec/api.ts",
+    "spec:lint": "npx @airtasker/spot lint src/spec/api.ts",
     "functions:deploy": "cp -r ./src/functions/* ./build/functions/",
     "local:docs": "npx @airtasker/spot docs src/spec/api.ts",
-    "local:dev": "netlify build && netlify dev --port=8008"
+    "local:dev": "netlify build && netlify dev --port=8008",
+    "public:dev": "npm run local:dev -- --live"
   },
   "author": "Aaron Bassett",
   "license": "MIT",
