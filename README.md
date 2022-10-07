@@ -8,11 +8,7 @@ Building and deploying requires a [Netlify account](https://www.netlify.com/) an
 
 The email sending requires a SendGrid account and a verified sender email. These should be added as the environment variables `SENDGRID_API_SECREY` and `SENDGRID_SENDER_EMAIL`. See [the Netlify documentation](https://docs.netlify.com/environment-variables/overview/) for how to set these environment in Netlify.
 
-{% note %}
-
-**Note:** NB: These environment variables must be available to serverless functions, so do not set them in your Netlify configuration file _(`netlify.toml`)_.
-
-{% endnote %}
+> 💡 **Note:** These environment variables must be available to serverless functions, so do not set them in your Netlify configuration file _(`netlify.toml`)_
 
 ```
 git clone git@github.com:aaronbassett/shareable.git
@@ -63,11 +59,7 @@ npm run public:dev
 
 This will run the local dev server and make it publicly available via a tunnel.
 
-{% warning %}
-
-**Warning:** This is a dev server and should be used only for demonstration purposes, never for production.
-
-{% endwarning %}
+> ⚠️ **Warning:** This is a dev server and should be used only for demonstration purposes, never for production.
 
 ## Trying the API endpoints
 
@@ -111,11 +103,7 @@ curl -s -X "POST" "http://localhost:8008/.netlify/functions/qr" \
 
 ![Screenshot of generated QR code in terminal](/README_IMGS/screenshot-qrcode-terminal.png)
 
-{% note %}
-
-**Note:** The above command uses [jq](https://stedolan.github.io/jq/), [sd](https://github.com/chmln/sd), and [viu](https://github.com/atanunq/viu)
-
-{% endnote %}
+> 💡 **Note:** The above command uses [jq](https://stedolan.github.io/jq/), [sd](https://github.com/chmln/sd), and [viu](https://github.com/atanunq/viu)
 
 ## The OpenAPI Specs
 
